@@ -450,6 +450,13 @@ int sam_bringup(void)
       syslog(LOG_ERR, "ERROR: progmem_initialize failed\n");
     }
 
+#if defined(CONFIG_BOARDCTL_BOOT_IMAGE)
+  ret = sam_progmem_init_ota_partitions(mtd);
+  if (ret < 0)
+    {
+      return ret;
+    }
+#else
   /* Use the FTL layer to wrap the MTD driver as a block driver */
 
   ret = ftl_initialize(PROGMEM_MTD_MINOR, mtd);
@@ -476,6 +483,7 @@ int sam_bringup(void)
       return ret;
     }
 #endif /* defined(CONFIG_BCH) */
+#endif /* defined(CONFIG_BOARDCTL_BOOT_IMAGE) */
 #endif
 
 #ifdef HAVE_USBHOST

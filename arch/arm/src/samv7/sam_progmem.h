@@ -51,5 +51,6 @@
  ****************************************************************************/
 
 void sam_progmem_initialize(void);
+int sam_progmem_init_ota_partitions(FAR struct mtd_dev_s *mtd);
 
 #endif /* __ARCH_ARM_SRC_SAMV7_SAM_PROGMEM_H */

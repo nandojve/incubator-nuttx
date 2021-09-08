@@ -32,7 +32,7 @@ ifeq ($(CONFIG_BOARDCTL_RESET),y)
 CSRCS += sam_reset.c
 endif
 ifeq ($(CONFIG_BOARDCTL_BOOT_IMAGE),y)
-CSRCS += sam_boot_image.c
+CSRCS += sam_boot_image.c sam_progmem_ota.c
 endif
 else ifeq ($(CONFIG_BOARD_LATE_INITIALIZE),y)
 CSRCS += sam_bringup.c
