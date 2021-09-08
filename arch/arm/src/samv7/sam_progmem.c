@@ -623,3 +623,16 @@ ssize_t up_progmem_erasestate(void)
 {
   return SAMV7_PROGMEM_ERASEDVAL;
 }
+
+/****************************************************************************
+ * Name: up_progmem_size
+ *
+ * Description:
+ *   Return the total memory size in bytes
+ *
+ ****************************************************************************/
+
+size_t up_progmem_size(void)
+{
+  return SAMV7_FLASH_SIZE;
+}
