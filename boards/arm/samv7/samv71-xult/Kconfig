@@ -5,6 +5,14 @@
 
 if ARCH_BOARD_SAMV71_XULT
 
+config SAMV71XULT_BOOTLOADER_APP
+	bool "Build an application to be used with a bootloader"
+	default n
+	---help---
+		This switch between linker scripts to allow an application be
+		built to another entry point address. If you don't know what
+		you are doing keep this option unselected.
+
 config SAMV71XULT_MXTXPLND
 	bool "MaXTouch Xplained connected"
 	default n
