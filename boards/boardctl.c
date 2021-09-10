@@ -472,7 +472,7 @@ int boardctl(unsigned int cmd, uintptr_t arg)
 
           DEBUGASSERT(info != NULL);
 
-          ret = board_boot_image(info->path, info->header_size);
+          ret = board_boot_image(info);
         }
         break;
 #endif

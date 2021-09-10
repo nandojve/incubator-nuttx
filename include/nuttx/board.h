@@ -354,7 +354,7 @@ int board_switch_boot(FAR const char *system);
  ****************************************************************************/
 
 #ifdef CONFIG_BOARDCTL_BOOT_IMAGE
-int board_boot_image(FAR const char *path, uint32_t hdr_size);
+int board_boot_image(FAR const struct boardioc_boot_info_s *info);
 #endif
 
 /****************************************************************************
