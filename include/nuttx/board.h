@@ -341,10 +341,8 @@ int board_switch_boot(FAR const char *system);
  *   entry point address).
  *
  * Input Parameters:
- *   path     - Path to the new application firmware image to be booted.
- *   hdr_size - Image header size in bytes. This value may be useful for
- *              skipping metadata information preprended to the application
- *              image.
+ *   info     - The boardioc_boot_info_s struct with the new application
+ *              firmware image data to be booted.
  *
  * Returned Value:
  *   If this function returns, then it was not possible to load the
@@ -354,7 +352,7 @@ int board_switch_boot(FAR const char *system);
  ****************************************************************************/
 
 #ifdef CONFIG_BOARDCTL_BOOT_IMAGE
-int board_boot_image(FAR const char *path, uint32_t hdr_size);
+int board_boot_image(FAR const struct boardioc_boot_info_s *info);
 #endif
 
 /****************************************************************************

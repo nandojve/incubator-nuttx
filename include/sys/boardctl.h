@@ -400,9 +400,11 @@ struct boardioc_nxterm_ioctl_s
 struct boardioc_boot_info_s
 {
   FAR const char *path;           /* Path to application firmware image */
+  uintptr_t       flash_base;     /* memory-mapped flash device's base address */
+  uint32_t        image_offset;   /* flash offset of the image to execute */
   uint32_t        header_size;    /* Size of the image header in bytes */
 };
-#endif
+#endif /* CONFIG_BOARDCTL_BOOT_IMAGE */
 
 /****************************************************************************
  * Public Data
