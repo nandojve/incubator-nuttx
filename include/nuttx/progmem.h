@@ -60,16 +60,6 @@ extern "C"
 size_t up_progmem_size(void);
 
 /****************************************************************************
- * Name: up_progmem_erasestate
- *
- * Description:
- *   Return a byte that represents flash erased value state
- *
- ****************************************************************************/
-
-uint8_t up_progmem_erasestate(void);
-
-/****************************************************************************
  * Name: up_progmem_neraseblocks
  *
  * Description:

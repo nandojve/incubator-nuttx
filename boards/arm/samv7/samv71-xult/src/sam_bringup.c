@@ -450,7 +450,7 @@ int sam_bringup(void)
       syslog(LOG_ERR, "ERROR: progmem_initialize failed\n");
     }
 
-#if defined(CONFIG_BOARDCTL_BOOT_IMAGE)
+#if defined(CONFIG_BOOT_MCUBOOT)
   ret = sam_progmem_init_ota_partitions(mtd);
   if (ret < 0)
     {
@@ -483,7 +483,7 @@ int sam_bringup(void)
       return ret;
     }
 #endif /* defined(CONFIG_BCH) */
-#endif /* defined(CONFIG_BOARDCTL_BOOT_IMAGE) */
+#endif /* defined(CONFIG_BOOT_MCUBOOT) */
 #endif
 
 #ifdef HAVE_USBHOST

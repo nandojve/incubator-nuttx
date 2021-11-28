@@ -24,9 +24,9 @@ include $(TOPDIR)/arch/arm/src/armv7-m/Toolchain.defs
 
 ifeq ($(CONFIG_SAMV71XULT_BOOTLOADER_APP),y)
   ifeq ($(CONFIG_ARMV7M_DTCM),y)
-    LDSCRIPT = flash-dtcm-ota.ld
+    LDSCRIPT = flash-dtcm-mcuboot-app.ld
   else
-    LDSCRIPT = flash-sram-ota.ld
+    LDSCRIPT = flash-sram-mcuboot-app.ld
   endif
 else
   ifeq ($(CONFIG_ARMV7M_DTCM),y)
