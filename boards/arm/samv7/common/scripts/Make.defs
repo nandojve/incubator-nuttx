@@ -18,10 +18,10 @@
 #
 ############################################################################
 
-ifneq ($(wildcard $(BOARD_DIR)$(DELIM)scripts$(DELIM)flat-template.ld),)
-  LDSCRIPT_TEMPLATE = $(BOARD_DIR)$(DELIM)scripts$(DELIM)flat-template.ld
+ifneq ($(wildcard $(BOARD_DIR)$(DELIM)scripts$(DELIM)memory-template.ld),)
+  LDSCRIPT_TEMPLATE = $(BOARD_DIR)$(DELIM)scripts$(DELIM)memory-template.ld
 else
-  LDSCRIPT_TEMPLATE = $(BOARD_COMMON_DIR)$(DELIM)scripts$(DELIM)flat-template.ld
+  LDSCRIPT_TEMPLATE = $(BOARD_COMMON_DIR)$(DELIM)scripts$(DELIM)memory-template.ld
 endif
 
 ifeq ($(CONFIG_DEBUG_SYMBOLS),y)

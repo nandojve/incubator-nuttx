@@ -22,10 +22,15 @@ include $(TOPDIR)/.config
 include $(TOPDIR)/tools/Config.mk
 include $(TOPDIR)/arch/arm/src/armv7-m/Toolchain.defs
 
+LDSCRIPT1 = memory.ld
+LDSCRIPT2 = flat.ld
+
 ifeq ($(CONFIG_CYGWIN_WINTOOL),y)
-  ARCHSCRIPT = -T "${shell cygpath -w $(BOARD_COMMON_DIR)$(DELIM)scripts$(DELIM)samv7.ld}"
+  ARCHSCRIPT = -T "${shell cygpath -w $(BOARD_COMMON_DIR)$(DELIM)scripts$(DELIM)$(LDSCRIPT1)}"
+  ARCHSCRIPT += -T "${shell cygpath -w $(BOARD_COMMON_DIR)$(DELIM)scripts$(DELIM)$(LDSCRIPT2)}"
 else
-  ARCHSCRIPT = -T$(BOARD_COMMON_DIR)$(DELIM)scripts$(DELIM)samv7.ld
+  ARCHSCRIPT = -T$(BOARD_COMMON_DIR)$(DELIM)scripts$(DELIM)$(LDSCRIPT1)
+  ARCHSCRIPT += -T$(BOARD_COMMON_DIR)$(DELIM)scripts$(DELIM)$(LDSCRIPT2)
 endif
 
 include $(BOARD_COMMON_DIR)/scripts/Make.defs

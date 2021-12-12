@@ -18,35 +18,9 @@
  *
  ****************************************************************************/
 
-#include <nuttx/config.h>
-
-#define FLASH_START_ADDR        0x00400000
-
-#ifdef CONFIG_ARMV7M_DTCM
-#  define SRAM_START_ADDR       0x20000000
-#else
-#  define SRAM_START_ADDR       0x20400000
-#endif
-
-#ifdef CONFIG_BOOTLOADER_MCUBOOT
-#  define MCUBOOT_HEADER_SIZE   CONFIG_BOOTLOADER_MCUBOOT_HEADER_SIZE
-#  ifdef CONFIG_BOARDCTL_BOOT_IMAGE
-#    define FLASH_OFFSET        0
-#    define FLASH_IMG_SIZE      CONFIG_BOOTLOADER_MCUBOOT_PRIMARY_SLOT_OFFSET
-#  else
-#    define FLASH_OFFSET        (CONFIG_BOOTLOADER_MCUBOOT_PRIMARY_SLOT_OFFSET + MCUBOOT_HEADER_SIZE)
-#    define FLASH_IMG_SIZE      (CONFIG_BOOTLOADER_MCUBOOT_SLOT_SIZE - MCUBOOT_HEADER_SIZE)
-#  endif
-#else
-#  define FLASH_OFFSET          0
-#  define FLASH_IMG_SIZE        CONFIG_ARCH_CHIP_SAMV7_MEM_FLASH
-#endif
-
-MEMORY
-{
-  flash (rx) : ORIGIN = FLASH_START_ADDR + FLASH_OFFSET, LENGTH = FLASH_IMG_SIZE
-  sram (rwx) : ORIGIN = SRAM_START_ADDR, LENGTH = CONFIG_ARCH_CHIP_SAMV7_MEM_RAM
-}
+/* NOTE:  This depends on the memory.ld script having been included prior to
+ * this script.
+ */
 
 OUTPUT_ARCH(arm)
 EXTERN(_vectors)

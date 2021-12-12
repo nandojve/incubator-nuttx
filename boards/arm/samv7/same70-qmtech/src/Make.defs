@@ -65,7 +65,7 @@ ifneq (,$(findstring y,$(CONFIG_SAMV7_DAC0) $(CONFIG_SAMV7_DAC1)))
 CSRCS += sam_dac.c
 endif
 
-SCRIPTOUT = $(BOARD_COMMON_DIR)$(DELIM)scripts$(DELIM)samv7.ld
+SCRIPTOUT = $(BOARD_COMMON_DIR)$(DELIM)scripts$(DELIM)memory.ld
 
 .PHONY = context distclean
 

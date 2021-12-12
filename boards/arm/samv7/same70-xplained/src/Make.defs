@@ -97,7 +97,7 @@ ifeq ($(CONFIG_IEEE802154_XBEE),y)
 CSRCS += sam_xbee.c
 endif
 
-SCRIPTOUT = $(BOARD_COMMON_DIR)$(DELIM)scripts$(DELIM)samv7.ld
+SCRIPTOUT = $(BOARD_COMMON_DIR)$(DELIM)scripts$(DELIM)memory.ld
 
 .PHONY = context distclean
 
