@@ -66,23 +66,23 @@ struct mcuboot_partition_s
 
 static FAR struct mtd_dev_s *g_samv7_progmem_mtd;
 
-#if defined(CONFIG_SAMV7_PROGMEM_OTA_PARTITION)
+#if defined(CONFIG_BOOTLOADER_MCUBOOT_MEDIA_PROGMEM)
 static const struct mcuboot_partition_s g_mcuboot_partition_table[] =
 {
   {
-    .offset  = CONFIG_SAMV7_OTA_PRIMARY_SLOT_OFFSET,
-    .size    = CONFIG_SAMV7_OTA_SLOT_SIZE,
-    .devpath = CONFIG_SAMV7_OTA_PRIMARY_SLOT_DEVPATH
+    .offset  = CONFIG_BOOTLOADER_MCUBOOT_PRIMARY_SLOT_OFFSET,
+    .size    = CONFIG_BOOTLOADER_MCUBOOT_SLOT_SIZE,
+    .devpath = CONFIG_BOOTLOADER_MCUBOOT_PRIMARY_SLOT_DEVPATH
   },
   {
-    .offset  = CONFIG_SAMV7_OTA_SECONDARY_SLOT_OFFSET,
-    .size    = CONFIG_SAMV7_OTA_SLOT_SIZE,
-    .devpath = CONFIG_SAMV7_OTA_SECONDARY_SLOT_DEVPATH
+    .offset  = CONFIG_BOOTLOADER_MCUBOOT_SECONDARY_SLOT_OFFSET,
+    .size    = CONFIG_BOOTLOADER_MCUBOOT_SLOT_SIZE,
+    .devpath = CONFIG_BOOTLOADER_MCUBOOT_SECONDARY_SLOT_DEVPATH
   },
   {
-    .offset  = CONFIG_SAMV7_OTA_SCRATCH_OFFSET,
-    .size    = CONFIG_SAMV7_OTA_SCRATCH_SIZE,
-    .devpath = CONFIG_SAMV7_OTA_SCRATCH_DEVPATH
+    .offset  = CONFIG_BOOTLOADER_MCUBOOT_SCRATCH_OFFSET,
+    .size    = CONFIG_BOOTLOADER_MCUBOOT_SCRATCH_SIZE,
+    .devpath = CONFIG_BOOTLOADER_MCUBOOT_SCRATCH_DEVPATH
   }
 };
 
@@ -159,7 +159,7 @@ static int init_mcuboot_partitions(void)
 
       if (!mtd)
         {
-          ferr("ERROR: create MTD OTA partition %s", part->devpath);
+          ferr("ERROR: create MTD MCUboot partition %s", part->devpath);
           continue;
         }
 
@@ -184,7 +184,7 @@ static int init_mcuboot_partitions(void)
 
   return ret;
 }
-#endif /* CONFIG_SAMV7_PROGMEM_OTA_PARTITION */
+#endif /* CONFIG_BOOTLOADER_MCUBOOT_MEDIA_PROGMEM */
 
 /****************************************************************************
  * Public Functions
@@ -213,7 +213,7 @@ int sam_progmem_common_initialize(void)
       return -EFAULT;
     }
 
-#if defined(CONFIG_SAMV7_PROGMEM_OTA_PARTITION)
+#if defined(CONFIG_BOOTLOADER_MCUBOOT_MEDIA_PROGMEM)
   ret = init_mcuboot_partitions();
   if (ret < 0)
     {

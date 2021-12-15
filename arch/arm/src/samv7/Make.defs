@@ -185,3 +185,7 @@ endif
 ifeq ($(CONFIG_SAMV7_DAC),y)
 CHIP_CSRCS += sam_dac.c
 endif
+
+bootloader:
+
+clean_bootloader:

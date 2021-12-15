@@ -382,6 +382,10 @@ config ARCH_HAVE_BOOTLOADER
 	bool
 	default n
 
+config ARCH_HAVE_BOOTLOADER_MCUBOOT
+	bool
+	default n
+
 config ARCH_FPU
 	bool "FPU support"
 	default y
@@ -1139,3 +1143,7 @@ config BOOT_SDRAM_DATA
 		.data and .bss sections can be initialized.
 
 endmenu # Boot Memory Configuration
+
+if ARCH_HAVE_BOOTLOADER
+source "arch/bootloader/Kconfig"
+endif

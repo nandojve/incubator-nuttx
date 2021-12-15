@@ -1,0 +1,38 @@
+#
+# For a description of the syntax of this configuration file,
+# see the file kconfig-language.txt in the NuttX tools repository.
+#
+
+comment "Bootloader"
+
+choice ARCH_BOOTLOADER_TYPE
+	prompt "Select bootloader"
+	default BOOTLOADER_DISABLED
+	---help---
+		Select the bootloader type.
+
+config BOOTLOADER_DISABLED
+	bool "Disabled"
+	---help---
+		Build applications without bootloader support.
+
+config BOOTLOADER_MCUBOOT
+	bool "MCUboot"
+	depends on ARCH_HAVE_BOOTLOADER_MCUBOOT
+	---help---
+		Enable board support to run MCUboot bootloader and
+		applications.
+
+endchoice
+
+if !BOOTLOADER_DISABLED
+
+menu "Configurations"
+
+if BOOTLOADER_MCUBOOT
+source "arch/bootloader/mcuboot/Kconfig"
+endif
+
+endmenu
+
+endif
